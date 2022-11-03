@@ -22,3 +22,31 @@ func Question1 (_ str: inout String) -> Bool {
 // removeFirst() fonksiyonunu kullanmak istediğim için inout kullanmam gerekti. Mutate'den dolayı. Bu sebeple & - Ampersand kullanıyorum.
 var Question1Input = "Omer"
 Question1(&Question1Input) ? print("Palindrom") : print("Palindrom değil")
+
+print("------------------------------Soru 2------------------------------")
+/*
+ Verilen bir array içerisindeki her bir elemanın sayısını veren bir fonksiyon yazınız.
+ */
+
+// T tipinde Int, Double, String değerler alabilir.
+func Question2<T>(_ arr: inout [T]) -> Dictionary<String, Int> {
+    // key, value Dictionary oluşumu.
+    var dict: [String:Int] = [String:Int]()
+    // Gelen değerleri String'e dönüştürme
+    var strArr = arr.map {
+        String(describing: $0)
+    }
+    
+    // Her bir element tekrar ediliyorsa value'yi 1 artırma yoksa 0 koyma
+    for e in strArr {
+        print(e)
+        dict[e] = (dict[e] ?? 0) + 1
+    }
+    return dict
+}
+
+var question2v1 = [1,2,2,3,4,5,1,1,2,3,1]
+var question2v2 = ["a", "b", "f", "a", "b", "a"]
+var question2v3 = [1.1, 2.3, 1.1231, 1.1231, 1.1, 1.1, 4.6, 7.8788]
+// inout kullanımı ile yine & konuluyor
+print(Question2(&question2v2))
