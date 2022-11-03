@@ -147,3 +147,29 @@ func Question5B() -> Int {
 }
 
 print("Sum: \(String(Question5B()))")
+
+print("------------------------------Soru 5 - Project Euler 3------------------------------")
+
+/*
+ The prime factors of 13195 are 5, 7, 13 and 29.
+ 
+ What is the largest prime factor of the number 600851475143 ?
+ */
+
+func Question5C(_ num: Int) -> [Int] {
+    if num <= 3 {
+        return [num]
+    }
+    
+    var range = Int(sqrt(Double(num)))
+    for i in 2...range {
+        if num % i == 0 {
+            var res = [i]
+            res.append(contentsOf: Question5C(num / i))
+            return res
+        }
+    }
+    return [num]
+}
+
+print(Question5C(600_851_475_143).last!)
