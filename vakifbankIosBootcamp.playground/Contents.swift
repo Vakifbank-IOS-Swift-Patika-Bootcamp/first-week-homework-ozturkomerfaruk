@@ -50,3 +50,28 @@ var question2v2 = ["a", "b", "f", "a", "b", "a"]
 var question2v3 = [1.1, 2.3, 1.1231, 1.1231, 1.1, 1.1, 4.6, 7.8788]
 // inout kullanımı ile yine & konuluyor
 print(Question2(&question2v2))
+
+print("------------------------------Soru 3------------------------------")
+/*
+ "*" Karakterinden piramit oluşturan fonksiyonu yazınız. Parametre olarak kaç katlı olacağı alınsın.
+ */
+print("Number of Rows: 5")
+
+func Question3(numberOfRows: Int) {
+    if numberOfRows < 0 {
+        print("It cannot be less than 0!")
+    } else {
+        /*for i in 0..<numberOfRows {
+         for _ in 0...i {
+         print("*", terminator: "")
+         }
+         print("\n")
+         }*/
+        
+        for i in 0...numberOfRows {
+            print(String.init(repeating: "*", count: i))
+        }
+    }
+}
+
+Question3(numberOfRows: -5)
