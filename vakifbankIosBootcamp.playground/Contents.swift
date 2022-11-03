@@ -75,3 +75,23 @@ func Question3(numberOfRows: Int) {
 }
 
 Question3(numberOfRows: -5)
+
+print("------------------------------Soru 4------------------------------")
+/*
+ Yazdığınız piramit fonksiyonun çıktısını ortalı olacak şekilde yazınız. Örn:
+ */
+print("Number of Rows: 5")
+
+func Question4(numberOfRows: Int) {
+    if numberOfRows < 0 {
+        print("It cannot be less than 0!")
+        
+    } else {
+        for i in 0...numberOfRows {
+            print(String.init(repeating: " ", count: numberOfRows-i) +
+                  String.init(repeating: "*", count: 2*i+1))
+        }
+    }
+}
+
+Question4(numberOfRows: 5)
