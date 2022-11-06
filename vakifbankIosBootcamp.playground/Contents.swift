@@ -1,4 +1,4 @@
-import Cocoa
+import Foundation
 
 print("------------------------------Soru 1------------------------------")
 /*
@@ -6,21 +6,34 @@ print("------------------------------Soru 1------------------------------")
  */
 
 func Question1 (_ str: inout String) -> Bool {
+    
+    var interpunctionMarksAndSpaces = [".", "?", "!", ",", ":", ";", "-", "[", "]", "(", ")", "{", "}","\'", "\"", "...", "/", "\\"]
+    
     // Eğer bir sayı girilecek bu değer - ile başlayacak olursa
     if str.first == "-" {
         str.removeFirst()
     }
     
     // Eğer boş bir şey verilecek olursa
-    if str == "" {
+    if str == "" || str == " " {
         return false
     }
-    return str == String(str.reversed())
+    
+    //boşluk ve cümle arasına gelen noktalama işaretlerini kaldırma
+    //let removeSpaces = str.replacingOccurrences(of: " ", with: "")
+    var removeStr = ""
+    removeStr = str.replacingOccurrences(of: " ", with: "")
+    
+    for i in interpunctionMarksAndSpaces {
+        removeStr = removeStr.replacingOccurrences(of: i, with: "")
+    }
+    var lowerCase = removeStr.lowercased()
+    return lowerCase == String(lowerCase.reversed())
 }
 
 // Sayı da girilebilir
 // removeFirst() fonksiyonunu kullanmak istediğim için inout kullanmam gerekti. Mutate'den dolayı. Bu sebeple & - Ampersand kullanıyorum.
-var Question1Input = "Omer"
+var Question1Input = "Mer,k?ez: E;m.el'e geleme/z Ekre\\M"
 Question1(&Question1Input) ? print("Palindrom") : print("Palindrom değil")
 
 print("------------------------------Soru 2------------------------------")
@@ -48,9 +61,9 @@ func Question2<T>(_ arr: inout [T]) -> Dictionary<String, Int> {
 var question2v1 = [1,2,2,3,4,5,1,1,2,3,1]
 var question2v2 = ["a", "b", "f", "a", "b", "a"]
 var question2v3 = [1.1, 2.3, 1.1231, 1.1231, 1.1, 1.1, 4.6, 7.8788]
+var deneme = ["a", "b", "a", true, true, "c", 1,2,2,2,2, 3.14] as [Any]
 // inout kullanımı ile yine & konuluyor
-print(Question2(&question2v2))
-
+print(Question2(&deneme))
 print("------------------------------Soru 3------------------------------")
 /*
  "*" Karakterinden piramit oluşturan fonksiyonu yazınız. Parametre olarak kaç katlı olacağı alınsın.
@@ -74,7 +87,7 @@ func Question3(numberOfRows: Int) {
     }
 }
 
-Question3(numberOfRows: -5)
+Question3(numberOfRows: 5)
 
 print("------------------------------Soru 4------------------------------")
 /*
@@ -96,7 +109,6 @@ func Question4(numberOfRows: Int) {
 
 Question4(numberOfRows: 5)
 
-
 print("------------------------------Soru 5 - Project Euler 1------------------------------")
 
 /*
@@ -115,8 +127,7 @@ func Question5A(num: Int) -> String {
     
     return String(describing: sum)
 }
-
-print("Sum: \(Question5A(num: 1000))")
+print("Soru 5 - Project Euler 1 => \(String(Question5A(num: 1000)))")
 
 print("------------------------------Soru 5 - Project Euler 2------------------------------")
 /*
@@ -145,8 +156,7 @@ func Question5B() -> Int {
     
     return sum
 }
-
-print("Sum: \(String(Question5B()))")
+print("Soru 5 - Project Euler 2 => \(String(Question5B()))")
 
 print("------------------------------Soru 5 - Project Euler 3------------------------------")
 
@@ -172,4 +182,4 @@ func Question5C(_ num: Int) -> [Int] {
     return [num]
 }
 
-print(Question5C(600_851_475_143).last!)
+print("Soru 5 - Project Euler 3 => \(Question5C(600_851_475_143).last!)")
