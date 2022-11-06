@@ -7,7 +7,7 @@ print("------------------------------Soru 1------------------------------")
 
 func Question1 (_ str: inout String) -> Bool {
     
-    var interpunctionMarksAndSpaces = [".", "?", "!", ",", ":", ";", "-", "[", "]", "(", ")", "{", "}","\'", "\"", "...", "/", "\\"]
+    var interpunctionMarks = [".", "?", "!", ",", ":", ";", "-", "[", "]", "(", ")", "{", "}","\'", "\"", "...", "/", "\\"]
     
     // Eğer bir sayı girilecek bu değer - ile başlayacak olursa
     if str.first == "-" {
@@ -24,7 +24,7 @@ func Question1 (_ str: inout String) -> Bool {
     var removeStr = ""
     removeStr = str.replacingOccurrences(of: " ", with: "")
     
-    for i in interpunctionMarksAndSpaces {
+    for i in interpunctionMarks {
         removeStr = removeStr.replacingOccurrences(of: i, with: "")
     }
     var lowerCase = removeStr.lowercased()
