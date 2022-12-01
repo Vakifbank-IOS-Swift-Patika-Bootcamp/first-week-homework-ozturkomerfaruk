@@ -61,7 +61,7 @@ func Question2<T>(_ arr: inout [T]) -> Dictionary<String, Int> {
 var question2v1 = [1,2,2,3,4,5,1,1,2,3,1]
 var question2v2 = ["a", "b", "f", "a", "b", "a"]
 var question2v3 = [1.1, 2.3, 1.1231, 1.1231, 1.1, 1.1, 4.6, 7.8788]
-var deneme = ["a", "b", "a", true, true, "c", 1,2,2,2,2, 3.14] as [Any]
+var deneme: [Any] = ["a", "b", "a", true, true, "c", 1,2,2,2,2, 3.14]
 // inout kullanımı ile yine & konuluyor
 print(Question2(&deneme))
 print("------------------------------Soru 3------------------------------")
